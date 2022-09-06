@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from '@vue/runtime-core'
+import { onMounted, ref } from 'vue'
 import { openRoom } from 'danmu-console-helper'
+import type { DanmuMsg, MsgHandler } from 'danmu-console-helper'
 import { TBox, TText } from '@temir/core'
-import DanmuMsg from './components/DanmuMsg.vue'
+import DanmuMsgCom from './components/DanmuMsgCom.vue'
 import TabSelector from './components/TabSelector.vue'
 
 const roomId = 652581
@@ -10,11 +11,11 @@ const watchers = ref(0)
 const watchersHighlight = ref(false)
 const hot = ref(0)
 const hotHighlight = ref(false)
-const danmuList = ref([])
+const danmuList = ref<DanmuMsg[]>([])
 
 onMounted(() => {
   try {
-    const handler = {
+    const handler: MsgHandler = {
       onHeartbeat: (newHot) => {
         hot.value = newHot
         hotHighlight.value = true
@@ -56,7 +57,7 @@ onMounted(() => {
         <TabSelector />
       </TBox>
       <TBox :flex-grow="1" flex-direction="column" width="100%" :height="16" border-style="round">
-        <DanmuMsg :msg="msg" v-for="msg in danmuList" />
+        <DanmuMsgCom :msg="msg" v-for="msg in danmuList" />
       </TBox>
     </TBox>
   </TBox>

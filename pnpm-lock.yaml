@@ -4,14 +4,12 @@ specifiers:
   '@temir/cli': ^0.0.18
   '@temir/core': ^0.0.18
   '@temir/tab': ^0.0.18
-  '@vue/runtime-core': ^3.2.38
   tsup: ^6.2.3
   typescript: ^4.8.2
   vue: ^3.2.38
 
 dependencies:
   '@temir/core': 0.0.18
-  '@vue/runtime-core': 3.2.38
   vue: 3.2.38
 
 devDependencies:

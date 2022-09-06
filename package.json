@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@temir/core": "^0.0.18",
-    "@vue/runtime-core": "^3.2.38",
     "vue": "^3.2.38"
   }
 }
