@@ -2,11 +2,14 @@
   "name": "bilicli",
   "version": "0.0.2",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "dev": "temir src/main.ts",
     "build": "temir build src/main.ts"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",
