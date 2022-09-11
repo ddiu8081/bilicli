@@ -2,39 +2,38 @@
 import { onMounted, ref } from 'vue'
 import { openRoom } from 'danmu-console-helper'
 import type { DanmuMsg, MsgHandler } from 'danmu-console-helper'
-import { TBox, TText } from '@temir/core'
+import { TBox } from '@temir/core'
+import { getRoomInfo, type RoomInfo } from './utils/getInfo'
+import CliHeader from './components/CliHeader.vue'
 import DanmuMsgCom from './components/DanmuMsgCom.vue'
 import TabSelector from './components/TabSelector.vue'
 
-const roomId = 652581
+const inputRoomId = 652581
+const currentRoomInfo = ref<RoomInfo | null>(null)
 const watchers = ref(0)
-const watchersHighlight = ref(false)
-const hot = ref(0)
-const hotHighlight = ref(false)
+const attention = ref(0)
 const danmuList = ref<DanmuMsg[]>([])
 
-onMounted(() => {
+onMounted(async () => {
+  const roomInfo = await getRoomInfo(inputRoomId)
+  if (!roomInfo) {
+    console.log('房间不存在')
+    return
+  }
+  currentRoomInfo.value = roomInfo
   try {
     const handler: MsgHandler = {
-      onHeartbeat: (newHot) => {
-        hot.value = newHot
-        hotHighlight.value = true
-        setTimeout(() => {
-          hotHighlight.value = false
-        }, 1000)
+      onHeartbeat: (newAttention) => {
+        attention.value = newAttention
       },
       onWatchedChange: (newWatched) => {
         watchers.value = newWatched
-        watchersHighlight.value = true
-        setTimeout(() => {
-          watchersHighlight.value = false
-        }, 1000)
       },
       onIncomeDanmu: (msg) => {
         danmuList.value.push(msg)
       },
     }
-    openRoom(roomId, handler)
+    openRoom(roomInfo.room_id, handler)
   } catch (error) {
     console.error(error)
   }
@@ -43,15 +42,7 @@ onMounted(() => {
 
 <template>
   <TBox flex-direction="column">
-    <TBox width="100%" :padding-left="1" :padding-right="2" border-style="round" justify-content="space-between">
-      <TBox>
-        <TText>{{ roomId }}</TText>
-      </TBox>
-      <TBox>
-        <TText :background-color="watchersHighlight ? 'green' : 'black'">{{ ` 👀${watchers} ` }}</TText>
-        <TText :background-color="hotHighlight ? 'green' : 'black'">{{ ` 🔥${hot} ` }}</TText>
-      </TBox>
-    </TBox>
+    <CliHeader :roomInfo="currentRoomInfo" :watchers="watchers" :attention="attention" />
     <TBox>
       <TBox flex-direction="column" border-style="round">
         <TabSelector />

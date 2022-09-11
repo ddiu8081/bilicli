@@ -6,7 +6,7 @@ const handler: MsgHandler = {
     console.log(`online: ${online}`);
   },
   onIncomeDanmu: (msg) => {
-    console.log(msg.user.uname, msg.content);
+    console.log(msg);
   },
   onIncomeDanmuRaw(data) {
     console.log(data.info)
@@ -16,7 +16,7 @@ const handler: MsgHandler = {
   // },
 }
 
-openRoom(41682, handler);
+openRoom(652581, handler);
 
 // const num = 6067854
 // const intToColorHex = (int: number) => {
