@@ -4,11 +4,12 @@ import { openRoom } from 'danmu-console-helper'
 import type { DanmuMsg, MsgHandler } from 'danmu-console-helper'
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
+import { getInputId } from './utils/cli'
 import CliHeader from './components/CliHeader.vue'
 import DanmuMsgCom from './components/DanmuMsgCom.vue'
 import TabSelector from './components/TabSelector.vue'
 
-const inputRoomId = 652581
+const inputRoomId = getInputId()
 const currentRoomInfo = ref<RoomInfo | null>(null)
 const watchers = ref(0)
 const attention = ref(0)
