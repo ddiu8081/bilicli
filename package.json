@@ -1,13 +1,17 @@
 {
   "name": "bilicli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "dist/main.js",
   "scripts": {
     "dev": "temir src/main.ts",
     "build": "temir build src/main.ts"
   },
+  "bin": {
+    "bilicli": "bin/bilicli.js"
+  },
+  "main": "dist/main.js",
   "files": [
+    "bin",
     "dist"
   ],
   "keywords": [],
