@@ -44,9 +44,13 @@ watch(() => props.roomInfo, info => {
 })
 
 const formatSeconds = (seconds: number) => {
-  const minutes = Math.floor(seconds / 60)
-  const leftSeconds = seconds % 60
-  return `${minutes}:${leftSeconds < 10 ? '0' : ''}${leftSeconds}`
+  const hours = Math.floor(seconds / 3600)
+  const minutes = Math.floor((seconds - hours * 3600) / 60)
+  const secs = seconds - hours * 3600 - minutes * 60
+  const formatH = hours ? `${hours}` : ''
+  const formatM = hours ? (minutes < 10 ? `0${minutes}` : `${minutes}`) : `${minutes}`
+  const formatS = secs < 10 ? `0${secs}` : `${secs}`
+  return `${formatH}:${formatM}:${formatS}`
 }
 
 </script>

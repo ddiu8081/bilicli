@@ -49,7 +49,7 @@ onMounted(async () => {
         <TabSelector />
       </TBox>
       <TBox :flex-grow="1" flex-direction="column" width="100%" :height="16" border-style="round">
-        <DanmuMsgCom :msg="msg" v-for="msg in danmuList" />
+        <DanmuMsgCom :msg="msg" v-for="msg in danmuList.slice(-14)" />
       </TBox>
     </TBox>
   </TBox>
