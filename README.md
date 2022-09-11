@@ -1,8 +1,14 @@
-# danmu-console
+# Bilicli
 
 (WIP) 终端里的 Bilibili 弹幕仪表盘。
 
 Api driven by [ddiu8081/danmu-console-helper](https://github.com/ddiu8081/danmu-console-helper).
+
+## Usage
+
+```bash
+npx bilicli <room-id>
+```
 
 ## Streams
 

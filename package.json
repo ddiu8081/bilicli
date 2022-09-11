@@ -1,6 +1,6 @@
 {
   "name": "bilicli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "scripts": {
     "dev": "temir src/main.ts",
@@ -19,8 +19,6 @@
   "license": "MIT",
   "devDependencies": {
     "@temir/cli": "^0.0.18",
-    "@temir/link": "^0.0.19",
-    "@temir/tab": "^0.0.18",
     "@types/node": "^18.7.16",
     "@types/yargs": "^17.0.12",
     "tsup": "^6.2.3",
@@ -28,6 +26,8 @@
   },
   "dependencies": {
     "@temir/core": "^0.0.18",
+    "@temir/link": "^0.0.19",
+    "@temir/tab": "^0.0.18",
     "dayjs": "^1.11.5",
     "ohmyfetch": "^0.4.18",
     "vue": "^3.2.38",
