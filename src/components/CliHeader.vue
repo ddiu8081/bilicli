@@ -50,7 +50,7 @@ const formatSeconds = (seconds: number) => {
   const formatH = hours ? `${hours}` : ''
   const formatM = hours ? (minutes < 10 ? `0${minutes}` : `${minutes}`) : `${minutes}`
   const formatS = secs < 10 ? `0${secs}` : `${secs}`
-  return `${formatH}:${formatM}:${formatS}`
+  return `${formatH ? `${formatH}:` : ''}${formatM}:${formatS}`
 }
 
 </script>
