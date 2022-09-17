@@ -8,12 +8,19 @@ const tabs = ['ALL', '弹幕', 'SC', '礼物']
 const activeIndex = ref(0)
 const selectedText = computed(() => tabs[activeIndex.value])
 
-const props = defineProps()
+const emit = defineEmits<{
+  (e: 'change', value: number): void
+}>()
+
+const handleTabChange = (index: string) => {
+  activeIndex.value = +index
+  emit('change', parseInt(index))
+}
 </script>
 
 <template>
   <TBox>
-    <TTabs flex-direction="column" :on-change="(index) => activeIndex = +index">
+    <TTabs flex-direction="column" :on-change="handleTabChange">
       <TTab v-for="item in tabs" :key="item">
         {{ item }}
       </TTab>
