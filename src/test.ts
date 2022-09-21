@@ -1,27 +1,12 @@
-import { openRoom } from 'danmu-console-helper';
-import type { MsgHandler } from 'danmu-console-helper';
+import { startListen, type MsgHandler } from 'blive-message-listener'
 
 const handler: MsgHandler = {
-  onHeartbeat: (online) => {
-    console.log(`online: ${online}`);
-  },
   onIncomeDanmu: (msg) => {
-    console.log(msg);
+    console.dir(msg, { depth: null });
   },
-  onIncomeDanmuRaw(data) {
-    console.log(data.info)
-  },
-  // onWatchedChange: (newWatched) => {
-  //   console.log('newWatched', newWatched)
-  // },
+  onIncomeSuperChat: (msg) => {
+    console.dir(msg, { depth: null });
+  }
 }
 
-openRoom(652581, handler);
-
-// const num = 6067854
-// const intToColorHex = (int: number) => {
-//   const hex = int.toString(16);
-//   console.log(hex)
-//   return hex.length === 1 ? `#0${hex}` : `#${hex}`;
-// };
-// console.log(intToColorHex(num))
+startListen(5050, handler);

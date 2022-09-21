@@ -2,7 +2,7 @@
 
 (WIP) 终端里的 Bilibili 弹幕仪表盘。
 
-Api driven by [ddiu8081/danmu-console-helper](https://github.com/ddiu8081/danmu-console-helper).
+Api driven by [blive-message-listener](https://www.npmjs.com/package/blive-message-listener).
 
 ## Usage
 
