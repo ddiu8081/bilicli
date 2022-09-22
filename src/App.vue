@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { openRoom } from 'danmu-console-helper'
-import type { DanmuMsg, MsgHandler } from 'danmu-console-helper'
+import { startListen } from 'blive-message-listener'
+import type { MsgHandler, Message, DanmuMsg, SuperChatMsg } from 'blive-message-listener'
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
 import { getInputId } from './utils/cli'
+
 import CliHeader from './components/CliHeader.vue'
 import DanmuMsgCom from './components/DanmuMsgCom.vue'
 import SuperChatMsgCom from './components/SuperChatMsgCom.vue'
@@ -15,9 +16,9 @@ const inputRoomId = getInputId()
 const currentRoomInfo = ref<RoomInfo | null>(null)
 const watchers = ref(0)
 const attention = ref(0)
-const allList = ref<any[]>([])
-const danmuList = ref<DanmuMsg[]>([])
-const superChatList = ref<any[]>([])
+const allList = ref<Message<any>[]>([])
+const danmuList = ref<Message<DanmuMsg>[]>([])
+const superChatList = ref<Message<SuperChatMsg>[]>([])
 const selectedTab = ref(0)
 
 onMounted(async () => {
@@ -29,11 +30,11 @@ onMounted(async () => {
   currentRoomInfo.value = roomInfo
   try {
     const handler: MsgHandler = {
-      onHeartbeat: (newAttention) => {
-        attention.value = newAttention
+      onAttentionChange: ({ body }) => {
+        attention.value = body.attention
       },
-      onWatchedChange: (newWatched) => {
-        watchers.value = newWatched
+      onWatchedChange: ({ body }) => {
+        watchers.value = body.num
       },
       onIncomeDanmu: (msg) => {
         allList.value.push(msg)
@@ -44,7 +45,7 @@ onMounted(async () => {
         superChatList.value.push(msg)
       },
     }
-    openRoom(roomInfo.room_id, handler)
+    startListen(roomInfo.room_id, handler)
   } catch (error) {
     console.error(error)
   }
@@ -64,10 +65,10 @@ const handleTabChange = (index: number) => {
       </TBox>
       <TBox :flex-grow="1" width="100%" :height="16" border-style="round">
         <TBox v-if="selectedTab === 1" flex-direction="column">
-          <DanmuMsgCom :msg="msg" v-for="msg in danmuList.slice(-14)" />
+          <DanmuMsgCom :msg="msg.body" v-for="msg in danmuList.slice(-14)" :key="msg.id" />
         </TBox>
         <TBox v-else-if="selectedTab === 2" flex-direction="column">
-          <SuperChatMsgCom :msg="msg" v-for="msg in superChatList.slice(-14)" />
+          <SuperChatMsgCom :msg="msg.body" v-for="msg in superChatList.slice(-14)" :key="msg.id" />
         </TBox>
         <TBox v-else flex-direction="column">
         </TBox>
