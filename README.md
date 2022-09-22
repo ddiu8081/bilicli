@@ -2,7 +2,7 @@
 
 (WIP) 终端里的 Bilibili 弹幕仪表盘。
 
-Api driven by [blive-message-listener](https://www.npmjs.com/package/blive-message-listener).
+Api driven by [blive-message-listener](https://github.com/ddiu8081/blive-message-listener).
 
 ## Usage
 
