@@ -10,6 +10,7 @@ import { getRoomInfo, type RoomInfo } from './utils/getInfo'
 import { getInputId } from './utils/cli'
 
 import CliHeader from './components/CliHeader.vue'
+import CliFooter from './components/CliFooter.vue'
 import TabSelector from './components/TabSelector.vue'
 import MsgTime from './components/MsgTime.vue'
 import MsgType from './components/MsgType.vue'
@@ -82,12 +83,12 @@ const handleTabChange = (index: number) => {
 
 <template>
   <TBox flex-direction="column">
-    <CliHeader :roomInfo="currentRoomInfo" :watchers="watchers" :attention="attention" />
+    <CliHeader :roomInfo="currentRoomInfo" />
     <TBox>
-      <TBox flex-direction="column" border-style="round">
+      <TBox flex-direction="column" border-style="single">
         <TabSelector @change="handleTabChange" />
       </TBox>
-      <TBox :flex-grow="1" width="100%" :height="16" border-style="round">
+      <TBox :flex-grow="1" width="100%" :height="16" border-style="single">
         <TBox v-if="selectedTab === 1" flex-direction="column">
           <TBox v-for="msg in danmuList.slice(-14)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
@@ -141,5 +142,11 @@ const handleTabChange = (index: number) => {
         </TBox>
       </TBox>
     </TBox>
+    <CliFooter
+      :roomInfo="currentRoomInfo"
+      :newestWatcher="newComerList[newComerList.length - 1]"
+      :watchers="watchers"
+      :attention="attention"
+    />
   </TBox>
 </template>
