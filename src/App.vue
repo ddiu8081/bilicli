@@ -12,6 +12,7 @@ import { getInputId } from './utils/cli'
 import CliHeader from './components/CliHeader.vue'
 import TabSelector from './components/TabSelector.vue'
 import MsgTime from './components/MsgTime.vue'
+import MsgType from './components/MsgType.vue'
 
 import DanmuMsgCom from './components/msgCom/DanmuMsgCom.vue'
 import SuperChatMsgCom from './components/msgCom/SuperChatMsgCom.vue'
@@ -64,7 +65,7 @@ onMounted(async () => {
         guardBuyList.value.push(msg)
       },
       onNewComer: (msg) => {
-        allList.value.push(msg)
+        // allList.value.push(msg)
         newComerList.value.push(msg)
       },
     }
@@ -118,6 +119,25 @@ const handleTabChange = (index: number) => {
           </TBox>
         </TBox>
         <TBox v-else flex-direction="column">
+          <TBox v-for="msg in allList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <MsgType :type="msg.type"></MsgType>
+            <template v-if="msg.type === 'DANMU_MSG'">
+              <DanmuMsgCom :msg="msg.body" :key="msg.id" />
+            </template>
+            <template v-else-if="msg.type === 'SUPER_CHAT_MESSAGE'">
+              <SuperChatMsgCom :msg="msg.body" :key="msg.id" />
+            </template>
+            <template v-else-if="msg.type === 'SEND_GIFT'">
+              <GiftMsgCom :msg="msg.body" :key="msg.id" />
+            </template>
+            <template v-else-if="msg.type === 'GUARD_BUY'">
+              <GuardBuyMsgCom :msg="msg.body" :key="msg.id" />
+            </template>
+            <template v-else-if="msg.type === 'INTERACT_WORD' || msg.type === 'ENTRY_EFFECT'">
+              <NewComerCom :msg="msg.body" :key="msg.id" />
+            </template>
+          </TBox>
         </TBox>
       </TBox>
     </TBox>

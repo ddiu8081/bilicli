@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { TBox, TText } from '@temir/core'
 import dayjs from 'dayjs'
 
