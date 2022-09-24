@@ -1,6 +1,6 @@
 {
   "name": "bilicli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "homepage": "https://github.com/ddiu8081/bilicli#readme",
   "repository": {
@@ -31,20 +31,20 @@
   "author": "ddiu8081 <ddiu8081@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@temir/cli": "^0.0.18",
-    "@types/node": "^18.7.16",
+    "@temir/cli": "^0.0.20",
+    "@types/node": "^18.7.18",
     "@types/yargs": "^17.0.12",
     "tsup": "^6.2.3",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.3"
   },
   "dependencies": {
-    "@temir/core": "^0.0.18",
-    "@temir/link": "^0.0.19",
-    "@temir/tab": "^0.0.18",
-    "blive-message-listener": "link:../blive-message-listener",
+    "@temir/core": "^0.0.20",
+    "@temir/link": "^0.0.20",
+    "@temir/tab": "^0.0.20",
+    "blive-message-listener": "^0.1.6",
     "dayjs": "^1.11.5",
-    "ohmyfetch": "^0.4.18",
-    "vue": "^3.2.38",
+    "ohmyfetch": "^0.4.19",
+    "vue": "^3.2.39",
     "yargs": "^17.5.1"
   }
 }
