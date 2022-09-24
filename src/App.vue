@@ -11,6 +11,7 @@ import { getInputId } from './utils/cli'
 
 import CliHeader from './components/CliHeader.vue'
 import TabSelector from './components/TabSelector.vue'
+import MsgTime from './components/MsgTime.vue'
 
 import DanmuMsgCom from './components/msgCom/DanmuMsgCom.vue'
 import SuperChatMsgCom from './components/msgCom/SuperChatMsgCom.vue'
@@ -87,19 +88,34 @@ const handleTabChange = (index: number) => {
       </TBox>
       <TBox :flex-grow="1" width="100%" :height="16" border-style="round">
         <TBox v-if="selectedTab === 1" flex-direction="column">
-          <DanmuMsgCom :msg="msg.body" v-for="msg in danmuList.slice(-14)" :key="msg.id" />
+          <TBox v-for="msg in danmuList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <DanmuMsgCom :msg="msg.body" :key="msg.id" />
+          </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 2" flex-direction="column">
-          <SuperChatMsgCom :msg="msg.body" v-for="msg in superChatList.slice(-14)" :key="msg.id" />
+          <TBox v-for="msg in superChatList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <SuperChatMsgCom :msg="msg.body" :key="msg.id" />
+          </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 3" flex-direction="column">
-          <GiftMsgCom :msg="msg.body" v-for="msg in giftList.slice(-14)" :key="msg.id" />
+          <TBox v-for="msg in giftList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <GiftMsgCom :msg="msg.body" :key="msg.id" />
+          </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 4" flex-direction="column">
-          <GuardBuyMsgCom :msg="msg.body" v-for="msg in guardBuyList.slice(-14)" :key="msg.id" />
+          <TBox v-for="msg in guardBuyList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <GuardBuyMsgCom :msg="msg.body" :key="msg.id" />
+          </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 5" flex-direction="column">
-          <NewComerCom :msg="msg.body" v-for="msg in newComerList.slice(-14)" :key="msg.id" />
+          <TBox v-for="msg in newComerList.slice(-14)" flex-direction="row">
+            <MsgTime :timestamp="msg.timestamp" />
+            <NewComerCom :msg="msg.body" :key="msg.id" />
+          </TBox>
         </TBox>
         <TBox v-else flex-direction="column">
         </TBox>
