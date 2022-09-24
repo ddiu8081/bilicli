@@ -2,7 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/bilicli)](https://www.npmjs.com/package/bilicli)
 
-(WIP) 终端里的 Bilibili 弹幕仪表盘。
+![screenshot](./screenshot.png)
+
+终端里的 Bilibili 弹幕仪表盘。
 
 Api driven by [blive-message-listener](https://github.com/ddiu8081/blive-message-listener).
 
