@@ -4,7 +4,7 @@ export const addSpace = (str: string) => {
   return ' ' + str + ' '
 }
 
-export const getUserNameColor = (level: GuardLevel = 0) => {
+export const getGuardColor = (level: GuardLevel = 0) => {
   const colorDict = ['#967E76', '#FF7C28', '#E17AFF', '#00D1F1']
   return colorDict[level]
 }

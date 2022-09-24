@@ -4,9 +4,8 @@ import { TBox, TText } from '@temir/core'
 import { TTab, TTabs } from '@temir/tab'
 // import type { DanmuMsg } from 'danmu-console-helper'
 
-const tabs = ['ALL', '弹幕', 'SC', '礼物']
+const tabs = ['ALL', '弹幕', 'SC', '礼物', '上舰', '进场']
 const activeIndex = ref(0)
-const selectedText = computed(() => tabs[activeIndex.value])
 
 const emit = defineEmits<{
   (e: 'change', value: number): void

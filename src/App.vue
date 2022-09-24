@@ -1,25 +1,35 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { startListen } from 'blive-message-listener'
-import type { MsgHandler, Message, DanmuMsg, SuperChatMsg } from 'blive-message-listener'
+import type { 
+  MsgHandler, Message,
+  DanmuMsg, SuperChatMsg, GiftMsg, GuardBuyMsg, NewComerMsg
+} from 'blive-message-listener'
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
 import { getInputId } from './utils/cli'
 
 import CliHeader from './components/CliHeader.vue'
-import DanmuMsgCom from './components/DanmuMsgCom.vue'
-import SuperChatMsgCom from './components/SuperChatMsgCom.vue'
-// import GiftMsgCom from './components/GiftMsgCom.vue'
 import TabSelector from './components/TabSelector.vue'
+
+import DanmuMsgCom from './components/msgCom/DanmuMsgCom.vue'
+import SuperChatMsgCom from './components/msgCom/SuperChatMsgCom.vue'
+import GiftMsgCom from './components/msgCom/GiftMsgCom.vue'
+import GuardBuyMsgCom from './components/msgCom/GuardBuyMsgCom.vue'
+import NewComerCom from './components/msgCom/NewComerMsgCom.vue'
 
 const inputRoomId = getInputId()
 const currentRoomInfo = ref<RoomInfo | null>(null)
 const watchers = ref(0)
 const attention = ref(0)
+const selectedTab = ref(0)
+
 const allList = ref<Message<any>[]>([])
 const danmuList = ref<Message<DanmuMsg>[]>([])
 const superChatList = ref<Message<SuperChatMsg>[]>([])
-const selectedTab = ref(0)
+const giftList = ref<Message<GiftMsg>[]>([])
+const guardBuyList = ref<Message<GuardBuyMsg>[]>([])
+const newComerList = ref<Message<NewComerMsg>[]>([])
 
 onMounted(async () => {
   const roomInfo = await getRoomInfo(inputRoomId)
@@ -43,6 +53,18 @@ onMounted(async () => {
       onIncomeSuperChat: (msg) => {
         allList.value.push(msg)
         superChatList.value.push(msg)
+      },
+      onGift: (msg) => {
+        allList.value.push(msg)
+        giftList.value.push(msg)
+      },
+      onGuardBuy: (msg) => {
+        allList.value.push(msg)
+        guardBuyList.value.push(msg)
+      },
+      onNewComer: (msg) => {
+        allList.value.push(msg)
+        newComerList.value.push(msg)
       },
     }
     startListen(roomInfo.room_id, handler)
@@ -69,6 +91,15 @@ const handleTabChange = (index: number) => {
         </TBox>
         <TBox v-else-if="selectedTab === 2" flex-direction="column">
           <SuperChatMsgCom :msg="msg.body" v-for="msg in superChatList.slice(-14)" :key="msg.id" />
+        </TBox>
+        <TBox v-else-if="selectedTab === 3" flex-direction="column">
+          <GiftMsgCom :msg="msg.body" v-for="msg in giftList.slice(-14)" :key="msg.id" />
+        </TBox>
+        <TBox v-else-if="selectedTab === 4" flex-direction="column">
+          <GuardBuyMsgCom :msg="msg.body" v-for="msg in guardBuyList.slice(-14)" :key="msg.id" />
+        </TBox>
+        <TBox v-else-if="selectedTab === 5" flex-direction="column">
+          <NewComerCom :msg="msg.body" v-for="msg in newComerList.slice(-14)" :key="msg.id" />
         </TBox>
         <TBox v-else flex-direction="column">
         </TBox>

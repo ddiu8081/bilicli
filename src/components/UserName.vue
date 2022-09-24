@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { TBox, TText } from '@temir/core'
 import type { User } from 'blive-message-listener'
-import { addSpace, getUserNameColor } from '../utils/format'
+import { addSpace, getGuardColor } from '../utils/format'
 
 const { userInfo } = defineProps<{
   userInfo: User
@@ -26,7 +26,7 @@ const badgeColor = computed(() => {
     </TBox>
     <TText background-color="blue">{{ userInfo.identity?.rank ? ` 榜${userInfo.identity.rank} ` : '' }}</TText>
     <TText background-color="red">{{ userInfo.identity?.room_admin ? '房' : '' }}</TText>
-    <TText bold :color="getUserNameColor(userInfo.identity?.guard_level)">{{ userInfo.uname }}</TText>
+    <TText bold :color="getGuardColor(userInfo.identity?.guard_level)">{{ userInfo.uname }}</TText>
     <TText>: </TText>
   </TBox>
 </template>

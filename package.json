@@ -1,6 +1,6 @@
 {
   "name": "bilicli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "homepage": "https://github.com/ddiu8081/bilicli#readme",
   "repository": {
@@ -41,7 +41,7 @@
     "@temir/core": "^0.0.20",
     "@temir/link": "^0.0.20",
     "@temir/tab": "^0.0.20",
-    "blive-message-listener": "^0.1.8",
+    "blive-message-listener": "^0.1.11",
     "dayjs": "^1.11.5",
     "ohmyfetch": "^0.4.19",
     "vue": "^3.2.39",

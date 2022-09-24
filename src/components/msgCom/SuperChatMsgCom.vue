@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TBox, TText } from '@temir/core'
 import type { SuperChatMsg } from 'blive-message-listener'
-import UserName from './UserName.vue'
+import UserName from '../UserName.vue'
 
 const { msg } = defineProps<{
   msg: SuperChatMsg
