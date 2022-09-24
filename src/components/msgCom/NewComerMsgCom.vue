@@ -13,7 +13,7 @@ const { msg } = defineProps<{
   <TBox>
     <TBox>
       <UserName :userInfo="msg.user" />
-      <TText> 进入直播间</TText>
+      <TText>进入直播间</TText>
     </TBox>
   </TBox>
 </template>
