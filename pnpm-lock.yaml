@@ -7,7 +7,7 @@ specifiers:
   '@temir/tab': ^0.0.20
   '@types/node': ^18.7.18
   '@types/yargs': ^17.0.12
-  blive-message-listener: ^0.1.6
+  blive-message-listener: ^0.1.8
   dayjs: ^1.11.5
   ohmyfetch: ^0.4.19
   tsup: ^6.2.3
@@ -19,7 +19,7 @@ dependencies:
   '@temir/core': 0.0.20
   '@temir/link': 0.0.20
   '@temir/tab': 0.0.20
-  blive-message-listener: 0.1.6
+  blive-message-listener: 0.1.8
   dayjs: 1.11.5
   ohmyfetch: 0.4.19
   vue: 3.2.39
@@ -737,7 +737,11 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
 
-  /bilibili-live-ws/6.2.1:
+  /base64-js/1.5.1:
+    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: false
+
+  /bilibili-live-ws/6.2.1_s6dgubocm6srlbjottxvb2ofwu:
     resolution: {integrity: sha512-oiFA7msbedTPB0ujDXFFxRWLso+QVgC+yXfAeBb6AOx9Azijskwr8/ikpmiYHV2NaFemTfVPkPT+CWn+LARYQA==}
     peerDependencies:
       buffer: ^6.0.3
@@ -745,7 +749,10 @@ packages:
       pako: ^2.0.4
     dependencies:
       array-flat-polyfill: 1.0.1
+      buffer: 6.0.3
+      events: 3.3.0
       isomorphic-ws: 4.0.1_ws@8.9.0
+      pako: 2.0.4
       ws: 8.9.0
     optionalDependencies:
       got: 11.8.5
@@ -759,15 +766,15 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /blive-message-listener/0.1.6:
-    resolution: {integrity: sha512-Tl1J9tfRQS2RKjioU/iHGYlh3IWtudgu4ypeWLxdH7q2lqrCte0p9iYBfCvXAQ14+uSD7ZASsyB22Yt9SAY10g==}
+  /blive-message-listener/0.1.8:
+    resolution: {integrity: sha512-1Nsfu9CwqjmL5Xg2Pn9+wnvsZ/nUgcq06PXuqTMVEPEjGbBJWGenGT7biE2/yMpV/Y6OpgOYh7YauJrV+pe1tw==}
     dependencies:
-      bilibili-live-ws: 6.2.1
+      bilibili-live-ws: 6.2.1_s6dgubocm6srlbjottxvb2ofwu
+      buffer: 6.0.3
+      events: 3.3.0
+      pako: 2.0.4
     transitivePeerDependencies:
-      - buffer
       - bufferutil
-      - events
-      - pako
       - utf-8-validate
     dev: false
 
@@ -795,6 +802,13 @@ packages:
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: true
+
+  /buffer/6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
 
   /bundle-require/3.1.0_esbuild@0.15.6:
     resolution: {integrity: sha512-IIXtAO7fKcwPHNPt9kY/WNVJqy7NDy6YqJvv6ENH0TOZoJ+yjpEsn1w40WKZbR2ibfu5g1rfgJTvmFHpm5aOMA==}
@@ -1445,6 +1459,11 @@ packages:
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
+  /events/3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
+
   /execa/5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -1621,6 +1640,10 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
     dev: true
+
+  /ieee754/1.2.1:
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+    dev: false
 
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
@@ -1897,6 +1920,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
     optional: true
+
+  /pako/2.0.4:
+    resolution: {integrity: sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==}
+    dev: false
 
   /patch-console/1.0.0:
     resolution: {integrity: sha512-nxl9nrnLQmh64iTzMfyylSlRozL7kAXIaxw1fVcLYdyhNkJCRUzirRZTikXGJsg+hc4fqpneTK6iU2H1Q8THSA==}
