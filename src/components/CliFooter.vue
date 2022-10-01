@@ -3,12 +3,16 @@ import { ref, watch } from 'vue'
 import { TBox, TText } from '@temir/core'
 import dayjs from 'dayjs'
 import type { Message, NewComerMsg } from 'blive-message-listener'
-import type { RoomInfo } from '../utils/getInfo'
 import NewComerCom from './msgCom/NewComerMsgCom.vue'
 
+interface LiveStatus {
+  isLive: boolean
+  startTime: string
+}
+
 const props = defineProps<{
-  roomInfo: RoomInfo | null
   newestWatcher: Message<NewComerMsg> | null
+  liveStatus: LiveStatus
   watchers: number
   attention: number
 }>()
@@ -17,6 +21,20 @@ const watchersHighlight = ref(false)
 const attentionHighlight = ref(false)
 const timer = ref(0)
 const timeText = ref(' ')
+
+watch(() => props.liveStatus, liveStatus => {
+  if (!liveStatus.isLive) {
+    clearInterval(timer.value)
+    return
+  }
+  timer.value = 0
+  clearInterval(timer.value)
+  // @ts-ignore
+  timer.value = setInterval(() => {
+    const liveSeconds = dayjs().diff(liveStatus.startTime, 'second')
+    timeText.value = formatSeconds(liveSeconds)
+  }, 1000)
+})
 
 watch(() => props.watchers, () => {
   watchersHighlight.value = true
@@ -29,20 +47,6 @@ watch(() => props.attention, () => {
   attentionHighlight.value = true
   setTimeout(() => {
     attentionHighlight.value = false
-  }, 1000)
-})
-
-watch(() => props.roomInfo, info => {
-  if (!info || info.live_status !== 1) {
-    clearInterval(timer.value)
-    return
-  }
-  timer.value = 0
-  clearInterval(timer.value)
-  // @ts-ignore
-  timer.value = setInterval(() => {
-    const liveSeconds = dayjs().diff(info.live_time, 'second')
-    timeText.value = formatSeconds(liveSeconds)
   }, 1000)
 })
 
@@ -65,14 +69,16 @@ const formatSeconds = (seconds: number) => {
     </TBox>
     <TBox>
       <TBox>
-        <TBox v-if="roomInfo">
-          <TBox v-if="roomInfo.live_status === 1">
-            <TText>🔴</TText>
-            <TText>{{ timeText }}</TText>
-            <TText> (Start at {{ dayjs(roomInfo.live_time).format('HH:mm') }}) </TText> 
+        <TBox v-if="liveStatus">
+          <TBox>
+            <TText v-if="liveStatus.isLive">🔴</TText>
+            <TText v-else>⚫️</TText>
           </TBox>
-          <TBox v-else>
-            <TText>⚫️</TText>
+          <TBox>
+            <template v-if="liveStatus.startTime">
+              <TText>{{ timeText }}</TText>
+              <TText> (Start at {{ dayjs(liveStatus.startTime).format('HH:mm') }}) </TText> 
+            </template>
           </TBox>
         </TBox>
       </TBox>

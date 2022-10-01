@@ -24,6 +24,10 @@ import NewComerCom from './components/msgCom/NewComerMsgCom.vue'
 
 const inputRoomId = getInputId()
 const currentRoomInfo = ref<RoomInfo | null>(null)
+const liveStatus = ref({
+  isLive: false,
+  startTime: ''
+})
 const watchers = ref(0)
 const attention = ref(0)
 const selectedTab = ref(0)
@@ -62,6 +66,10 @@ onMounted(async () => {
     return
   }
   currentRoomInfo.value = roomInfo
+  liveStatus.value = {
+    isLive: roomInfo.live_status === 1,
+    startTime: roomInfo.live_time,
+  }
   try {
     const handler: MsgHandler = {
       onAttentionChange: ({ body }) => {
@@ -87,7 +95,6 @@ onMounted(async () => {
         guardBuyList.value.push(msg)
       },
       onNewComer: (msg) => {
-        // allList.value.push(msg)
         newComerList.value.push(msg)
       },
     }
@@ -105,7 +112,7 @@ const handleTabChange = (index: number) => {
 <template>
   <TBox flex-direction="column" height="100%" >
     <CliHeader :roomInfo="currentRoomInfo" />
-    <TBox>
+    <TBox :flex-grow="1">
       <TBox flex-direction="column" border-style="single">
         <TabSelector @change="handleTabChange" />
       </TBox>
@@ -164,7 +171,7 @@ const handleTabChange = (index: number) => {
       </TBox>
     </TBox>
     <CliFooter
-      :roomInfo="currentRoomInfo"
+      :liveStatus="liveStatus"
       :newestWatcher="newComerList[newComerList.length - 1]"
       :watchers="watchers"
       :attention="attention"
