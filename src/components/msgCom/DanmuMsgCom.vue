@@ -14,6 +14,8 @@ const { msg } = defineProps<{
     <TBox>
       <UserName :userInfo="msg.user" />
       <TBox :flex-glow="1">
+        <TText color="yellow" v-if="msg.lottery">[抽奖] </TText>
+        <TText color="yellow" v-if="msg.emoticon">[表情] </TText>
         <TText>{{ msg.content }}</TText>
       </TBox>
     </TBox>
