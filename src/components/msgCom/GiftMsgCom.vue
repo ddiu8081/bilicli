@@ -15,8 +15,15 @@ const { msg } = defineProps<{
       <UserName :userInfo="msg.user" />
       <TBox>
         <TText>赠送了</TText>
-        <TText>(¥{{ msg.price / 1000 }}) </TText>
-        <TText>【{{ msg.gift_name }}】 * {{ msg.amount }}</TText>
+        <TText>
+          <TText color="magenta"> (¥{{ msg.price / 1000 }}) </TText>
+          <TText color="magenta">{{ msg.gift_name }}</TText>
+          <TText> * {{ msg.amount }}</TText>
+        </TText>
+        <TText v-if="msg.send_master?.uname">
+          <TText> 给 </TText>
+          <TText color="magenta" dimColor>{{ msg.send_master.uname }}</TText>
+        </TText>
       </TBox>
     </TBox>
   </TBox>
