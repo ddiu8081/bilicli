@@ -78,6 +78,18 @@ onMounted(async () => {
       onWatchedChange: ({ body }) => {
         watchers.value = body.num
       },
+      onLiveStart: async ({ body }) => {
+        const roomInfo = await getRoomInfo(inputRoomId)
+        if (roomInfo) {
+          liveStatus.value = {
+            isLive: roomInfo.live_status === 1,
+            startTime: roomInfo.live_time,
+          }
+        }
+      },
+      onLiveEnd: () => {
+        liveStatus.value.isLive = false
+      },
       onIncomeDanmu: (msg) => {
         allList.value.push(msg)
         danmuList.value.push(msg)

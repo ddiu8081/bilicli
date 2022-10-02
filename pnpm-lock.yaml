@@ -7,7 +7,7 @@ specifiers:
   '@temir/tab': ^0.0.20
   '@types/node': ^18.7.23
   '@types/yargs': ^17.0.13
-  blive-message-listener: ^0.2.0
+  blive-message-listener: ^0.2.1
   dayjs: ^1.11.5
   ohmyfetch: ^0.4.19
   tsup: ^6.2.3
@@ -19,7 +19,7 @@ dependencies:
   '@temir/core': 0.0.20
   '@temir/link': 0.0.20
   '@temir/tab': 0.0.20
-  blive-message-listener: 0.2.0
+  blive-message-listener: 0.2.1
   dayjs: 1.11.5
   ohmyfetch: 0.4.19
   vue: 3.2.40
@@ -704,8 +704,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /blive-message-listener/0.2.0:
-    resolution: {integrity: sha512-vPTieno3qWQmrS/m6S9Ej3d2mVl6KnjgqRSQgWOe8d7xmomogHCGtrFL3n9Uy5dKd73K0SPgggy3ZDLl24K0Wg==}
+  /blive-message-listener/0.2.1:
+    resolution: {integrity: sha512-ITd7/doenWfhr6X+rDpf/pFvWm33gkYKI2rAlsM/1PjNfn/m6uTiHW904S15D2dONB/GHVyL81LGA86Cxy6bvg==}
     dependencies:
       tiny-bilibili-ws: 0.0.2
     transitivePeerDependencies:

@@ -41,7 +41,7 @@
     "@temir/core": "^0.0.20",
     "@temir/link": "^0.0.20",
     "@temir/tab": "^0.0.20",
-    "blive-message-listener": "^0.2.0",
+    "blive-message-listener": "^0.2.1",
     "dayjs": "^1.11.5",
     "ohmyfetch": "^0.4.19",
     "vue": "^3.2.40",

@@ -22,8 +22,8 @@ const attentionHighlight = ref(false)
 const timer = ref(0)
 const timeText = ref(' ')
 
-watch(() => props.liveStatus, liveStatus => {
-  if (!liveStatus.isLive) {
+watch(() => [props.liveStatus.isLive, props.liveStatus.startTime], () => {
+  if (!props.liveStatus.isLive) {
     clearInterval(timer.value)
     return
   }
@@ -31,7 +31,7 @@ watch(() => props.liveStatus, liveStatus => {
   clearInterval(timer.value)
   // @ts-ignore
   timer.value = setInterval(() => {
-    const liveSeconds = dayjs().diff(liveStatus.startTime, 'second')
+    const liveSeconds = dayjs().diff(props.liveStatus.startTime, 'second')
     timeText.value = formatSeconds(liveSeconds)
   }, 1000)
 })
