@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import readline from 'readline'
 import { onMounted, ref } from 'vue'
 import { startListen } from 'blive-message-listener'
 import type { 
@@ -9,6 +8,7 @@ import type {
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
 import { getInputId } from './utils/cli'
+import { listenQuitCommand } from './utils/readline'
 
 import CliHeader from './components/CliHeader.vue'
 import CliFooter from './components/CliFooter.vue'
@@ -40,30 +40,11 @@ const guardBuyList = ref<Message<GuardBuyMsg>[]>([])
 const newComerList = ref<Message<NewComerMsg>[]>([])
 
 onMounted(async () => {
-  let rl: readline.Interface = readline.createInterface({ input: process.stdin, escapeCodeTimeout: 50 })
-
-  readline.emitKeypressEvents(process.stdin, rl)
-  if (process.stdin.isTTY)
-    process.stdin.setRawMode(true)
-
-  function keypressHandler(str: string, key: any) {
-    // ctrl-c or esc
-    if (str === '\x03' || str === '\x1B' || (key && key.ctrl && key.name === 'c'))
-      return process.exit()
-
-    const name = key?.name
-
-    // quit
-    if (name === 'q')
-      return process.exit()
-  }
-
-  process.stdin.on('keypress', keypressHandler)
-
+  listenQuitCommand()
   const roomInfo = await getRoomInfo(inputRoomId)
   if (!roomInfo) {
     console.log('房间不存在')
-    return
+    return process.exit(1)
   }
   currentRoomInfo.value = roomInfo
   liveStatus.value = {
