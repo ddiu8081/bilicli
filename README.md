@@ -23,6 +23,7 @@ npx bilicli <room_id> [...options]
 
 - `-h, --help`: 显示帮助信息
 - `--no-badge`: 隐藏用户牌子信息
+- `--no-rank`: 隐藏用户榜单排名信息
 
 ## Streams
 

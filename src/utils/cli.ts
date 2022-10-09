@@ -1,4 +1,5 @@
 import mri from 'mri'
+import { name, version } from '../../package.json'
 
 interface Args {
   help: boolean
@@ -11,7 +12,8 @@ export const parseCliArgs = (): AppOptions => {
   const args = mri<Args>(process.argv.slice(2))
 
   if (!args._.length || args.help || args.h) {
-    console.error('Usage: npx bilicli@latest <room_id> [--no-badge] [--no-rank]')
+    console.log(`${name} v${version}`)
+    console.log('Usage: npx ${name}@latest <room_id> [--no-badge] [--no-rank]')
     process.exit(args.help || args.h ? 0 : 1)
   }
 
