@@ -33,6 +33,7 @@ const watchers = ref(0)
 const attention = ref(0)
 const selectedTab = ref(0)
 
+const contentHeight = process.stdout.rows - 8 || 14
 const allList = ref<Message<any>[]>([])
 const danmuList = ref<Message<DanmuMsg>[]>([])
 const superChatList = ref<Message<SuperChatMsg>[]>([])
@@ -110,39 +111,39 @@ const handleTabChange = (index: number) => {
       <TBox flex-direction="column" border-style="single">
         <TabSelector @change="handleTabChange" />
       </TBox>
-      <TBox :flex-grow="1" width="100%" :height="16" border-style="single">
+      <TBox :flex-grow="1" width="100%" :height="contentHeight + 2" border-style="single">
         <TBox v-if="selectedTab === 1" flex-direction="column">
-          <TBox v-for="msg in danmuList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in danmuList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <DanmuMsgCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 2" flex-direction="column">
-          <TBox v-for="msg in superChatList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in superChatList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <SuperChatMsgCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 3" flex-direction="column">
-          <TBox v-for="msg in giftList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in giftList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <GiftMsgCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 4" flex-direction="column">
-          <TBox v-for="msg in guardBuyList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in guardBuyList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <GuardBuyMsgCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 5" flex-direction="column">
-          <TBox v-for="msg in newComerList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in newComerList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <NewComerCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else flex-direction="column">
-          <TBox v-for="msg in allList.slice(-14)" flex-direction="row">
+          <TBox v-for="msg in allList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
             <MsgType :type="msg.type"></MsgType>
             <template v-if="msg.type === 'DANMU_MSG'">
