@@ -1,7 +1,14 @@
-import yargs from 'yargs'
+import mri from 'mri'
 
-export const getInputId = (): number => {
-  // @ts-ignore
-  const args = yargs.argv['_']
-  return args[args.length - 1]
+interface Args {}
+
+interface AppOptions {
+  roomId: number
+}
+
+export const parseCliArgs = (): AppOptions => {
+  const args = mri<Args>(process.argv.slice(2), { boolean:['bar'] })
+  return {
+    roomId: ~~args._[args._.length - 1],
+  }
 }

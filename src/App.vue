@@ -7,7 +7,7 @@ import type {
 } from 'blive-message-listener'
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
-import { getInputId } from './utils/cli'
+import { parseCliArgs } from './utils/cli'
 import { listenQuitCommand } from './utils/readline'
 
 import CliHeader from './components/CliHeader.vue'
@@ -22,7 +22,7 @@ import GiftMsgCom from './components/msgCom/GiftMsgCom.vue'
 import GuardBuyMsgCom from './components/msgCom/GuardBuyMsgCom.vue'
 import NewComerCom from './components/msgCom/NewComerMsgCom.vue'
 
-const inputRoomId = getInputId()
+const options = parseCliArgs()
 const currentRoomInfo = ref<RoomInfo | null>(null)
 const liveStatus = ref({
   isLive: false,
@@ -41,7 +41,7 @@ const newComerList = ref<Message<NewComerMsg>[]>([])
 
 onMounted(async () => {
   listenQuitCommand()
-  const roomInfo = await getRoomInfo(inputRoomId)
+  const roomInfo = await getRoomInfo(options.roomId)
   if (!roomInfo) {
     console.log('房间不存在')
     return process.exit(1)
