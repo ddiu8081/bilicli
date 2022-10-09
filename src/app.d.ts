@@ -7,4 +7,5 @@ declare module '*.vue' {
 interface AppOptions {
   roomId: number
   badge: boolean
+  rank: boolean
 }

@@ -26,7 +26,7 @@ const badgeColor = computed(() => {
         <TText :color="badgeColor" background-color="#ffffff">{{ addSpace(userInfo.badge.level.toString()) }}</TText>
       </TBox>
     </TBox>
-    <TText background-color="blue">{{ userInfo.identity?.rank ? ` 榜${userInfo.identity.rank} ` : '' }}</TText>
+    <TText background-color="blue">{{ options.rank && userInfo.identity?.rank ? ` 榜${userInfo.identity.rank} ` : '' }}</TText>
     <TText background-color="red">{{ userInfo.identity?.room_admin ? '房' : '' }}</TText>
     <TText bold :color="getGuardColor(userInfo.identity?.guard_level)">{{ userInfo.uname }}</TText>
     <TText>: </TText>
