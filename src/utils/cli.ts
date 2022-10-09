@@ -1,14 +1,21 @@
 import mri from 'mri'
 
-interface Args {}
-
-interface AppOptions {
-  roomId: number
+interface Args {
+  help: boolean
+  h: boolean
+  badge: boolean
 }
 
 export const parseCliArgs = (): AppOptions => {
-  const args = mri<Args>(process.argv.slice(2), { boolean:['bar'] })
+  const args = mri<Args>(process.argv.slice(2))
+
+  if (!args._.length || args.help || args.h) {
+    console.error('Usage: npx bilicli@latest <room_id> [--no-badge]')
+    process.exit(args.help || args.h ? 0 : 1)
+  }
+
   return {
     roomId: ~~args._[args._.length - 1],
+    badge: args.badge ?? true
   }
 }

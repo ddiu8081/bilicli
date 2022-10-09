@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { provide, onMounted, ref } from 'vue'
 import { startListen } from 'blive-message-listener'
 import type { 
   MsgHandler, Message,
@@ -23,6 +23,7 @@ import GuardBuyMsgCom from './components/msgCom/GuardBuyMsgCom.vue'
 import NewComerCom from './components/msgCom/NewComerMsgCom.vue'
 
 const options = parseCliArgs()
+provide('options', options)
 const currentRoomInfo = ref<RoomInfo | null>(null)
 const liveStatus = ref({
   isLive: false,
@@ -60,7 +61,7 @@ onMounted(async () => {
         watchers.value = body.num
       },
       onLiveStart: async ({ body }) => {
-        const roomInfo = await getRoomInfo(inputRoomId)
+        const roomInfo = await getRoomInfo(options.roomId)
         if (roomInfo) {
           liveStatus.value = {
             isLive: roomInfo.live_status === 1,

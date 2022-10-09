@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { inject, computed } from 'vue'
 import { TBox, TText } from '@temir/core'
 import type { User } from 'blive-message-listener'
 import { addSpace, getGuardColor } from '../utils/format'
+
+const options = inject('options') as AppOptions
 
 const { userInfo } = defineProps<{
   userInfo: User
@@ -19,7 +21,7 @@ const badgeColor = computed(() => {
 <template>
   <TBox :flex-shrink="0">
     <TBox>
-      <TBox v-if="userInfo.badge && userInfo.badge.active" :margin-right="1">
+      <TBox v-if="options.badge && userInfo.badge && userInfo.badge.active" :margin-right="1">
         <TText :background-color="badgeColor" :flex-shrink="0">{{ addSpace(userInfo.badge.name) }}</TText>
         <TText :color="badgeColor" background-color="#ffffff">{{ addSpace(userInfo.badge.level.toString()) }}</TText>
       </TBox>

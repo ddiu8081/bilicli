@@ -2,17 +2,27 @@
 
 [![npm](https://img.shields.io/npm/v/bilicli)](https://www.npmjs.com/package/bilicli)
 
-![screenshot](./screenshot.gif)
+> 终端里的 Bilibili 弹幕仪表盘
 
-终端里的 Bilibili 弹幕仪表盘。
+![screenshot](./screenshot.gif)
 
 Api driven by [blive-message-listener](https://github.com/ddiu8081/blive-message-listener).
 
 ## Usage
 
 ```bash
-npx bilicli <room-id>
+npx bilicli <room_id> [...options]
 ```
+
+### Arguments
+
+
+- `room_id`: B站直播间房间号，支持短id
+
+### Options
+
+- `-h, --help`: 显示帮助信息
+- `--no-badge`: 隐藏用户牌子信息
 
 ## Streams
 
