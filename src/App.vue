@@ -33,7 +33,7 @@ const watchers = ref(0)
 const attention = ref(0)
 const selectedTab = ref(0)
 
-const contentHeight = process.stdout.rows - 8 || 14
+const contentHeight = process.stdout.rows - 9 || 14
 const allList = ref<Message<any>[]>([])
 const danmuList = ref<Message<DanmuMsg>[]>([])
 const superChatList = ref<Message<SuperChatMsg>[]>([])
