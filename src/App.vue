@@ -3,7 +3,7 @@ import { provide, onMounted, ref } from 'vue'
 import { startListen } from 'blive-message-listener'
 import type { 
   MsgHandler, Message,
-  DanmuMsg, SuperChatMsg, GiftMsg, GuardBuyMsg, NewComerMsg
+  DanmuMsg, SuperChatMsg, GiftMsg, GuardBuyMsg, UserActionMsg
 } from 'blive-message-listener'
 import { TBox } from '@temir/core'
 import { getRoomInfo, type RoomInfo } from './utils/getInfo'
@@ -20,7 +20,7 @@ import DanmuMsgCom from './components/msgCom/DanmuMsgCom.vue'
 import SuperChatMsgCom from './components/msgCom/SuperChatMsgCom.vue'
 import GiftMsgCom from './components/msgCom/GiftMsgCom.vue'
 import GuardBuyMsgCom from './components/msgCom/GuardBuyMsgCom.vue'
-import NewComerCom from './components/msgCom/NewComerMsgCom.vue'
+import UserActionMsgCom from './components/msgCom/UserActionMsgCom.vue'
 
 const options = parseCliArgs()
 provide('options', options)
@@ -39,7 +39,7 @@ const danmuList = ref<Message<DanmuMsg>[]>([])
 const superChatList = ref<Message<SuperChatMsg>[]>([])
 const giftList = ref<Message<GiftMsg>[]>([])
 const guardBuyList = ref<Message<GuardBuyMsg>[]>([])
-const newComerList = ref<Message<NewComerMsg>[]>([])
+const userActionList = ref<Message<UserActionMsg>[]>([])
 
 onMounted(async () => {
   listenQuitCommand()
@@ -90,8 +90,8 @@ onMounted(async () => {
         allList.value.push(msg)
         guardBuyList.value.push(msg)
       },
-      onNewComer: (msg) => {
-        newComerList.value.push(msg)
+      onUserAction: (msg) => {
+        userActionList.value.push(msg)
       },
     }
     startListen(roomInfo.room_id, handler)
@@ -138,9 +138,9 @@ const handleTabChange = (index: number) => {
           </TBox>
         </TBox>
         <TBox v-else-if="selectedTab === 5" flex-direction="column">
-          <TBox v-for="msg in newComerList.slice(-contentHeight)" flex-direction="row">
+          <TBox v-for="msg in userActionList.slice(-contentHeight)" flex-direction="row">
             <MsgTime :timestamp="msg.timestamp" />
-            <NewComerCom :msg="msg.body" :key="msg.id" />
+            <UserActionMsgCom :msg="msg.body" :key="msg.id" />
           </TBox>
         </TBox>
         <TBox v-else flex-direction="column">
@@ -160,7 +160,7 @@ const handleTabChange = (index: number) => {
               <GuardBuyMsgCom :msg="msg.body" :key="msg.id" />
             </template>
             <template v-else-if="msg.type === 'INTERACT_WORD' || msg.type === 'ENTRY_EFFECT'">
-              <NewComerCom :msg="msg.body" :key="msg.id" />
+              <UserActionMsgCom :msg="msg.body" :key="msg.id" />
             </template>
           </TBox>
         </TBox>
@@ -168,7 +168,7 @@ const handleTabChange = (index: number) => {
     </TBox>
     <CliFooter
       :liveStatus="liveStatus"
-      :newestWatcher="newComerList[newComerList.length - 1]"
+      :newestWatcher="userActionList[userActionList.length - 1]"
       :watchers="watchers"
       :attention="attention"
     />

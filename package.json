@@ -39,7 +39,7 @@
     "@temir/core": "^0.0.20",
     "@temir/link": "^0.0.20",
     "@temir/tab": "^0.0.20",
-    "blive-message-listener": "^0.2.1",
+    "blive-message-listener": "^0.3.0",
     "dayjs": "^1.11.5",
     "mri": "^1.2.0",
     "ohmyfetch": "^0.4.19",

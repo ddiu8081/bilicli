@@ -4,7 +4,7 @@ import { TBox, TText } from '@temir/core'
 import { TTab, TTabs } from '@temir/tab'
 // import type { DanmuMsg } from 'danmu-console-helper'
 
-const tabs = ['ALL', '弹幕', 'SC', '礼物', '上舰', '进场']
+const tabs = ['ALL', '弹幕', 'SC', '礼物', '上舰', '用户']
 const activeIndex = ref(0)
 
 const emit = defineEmits<{

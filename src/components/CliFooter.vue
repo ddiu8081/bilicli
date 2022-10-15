@@ -2,8 +2,8 @@
 import { ref, watch } from 'vue'
 import { TBox, TText } from '@temir/core'
 import dayjs from 'dayjs'
-import type { Message, NewComerMsg } from 'blive-message-listener'
-import NewComerCom from './msgCom/NewComerMsgCom.vue'
+import type { Message, UserActionMsg } from 'blive-message-listener'
+import UserActionMsgCom from './msgCom/UserActionMsgCom.vue'
 
 interface LiveStatus {
   isLive: boolean
@@ -11,7 +11,7 @@ interface LiveStatus {
 }
 
 const props = defineProps<{
-  newestWatcher: Message<NewComerMsg> | null
+  newestWatcher: Message<UserActionMsg> | null
   liveStatus: LiveStatus
   watchers: number
   attention: number
@@ -65,7 +65,7 @@ const formatSeconds = (seconds: number) => {
 <template>
   <TBox width="100%" :padding-left="1" :padding-right="2" border-style="single" justify-content="space-between">
     <TBox>
-      <NewComerCom v-if="props.newestWatcher" :msg="props.newestWatcher.body" :key="props.newestWatcher.id" />
+      <UserActionMsgCom v-if="props.newestWatcher" :msg="props.newestWatcher.body" :key="props.newestWatcher.id" />
     </TBox>
     <TBox>
       <TBox>
