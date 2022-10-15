@@ -74,6 +74,7 @@ onMounted(async () => {
         liveStatus.value.isLive = false
       },
       onIncomeDanmu: (msg) => {
+        if (msg.body.lottery) return
         allList.value.push(msg)
         danmuList.value.push(msg)
       },

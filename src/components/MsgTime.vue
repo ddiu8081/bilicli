@@ -12,4 +12,3 @@ const { timestamp } = defineProps<{
     <TText color="#666666">{{ dayjs(timestamp).format('HH:mm:ss') }}</TText>
   </TBox>
 </template>
-  
