@@ -1,24 +1,7 @@
 {
-  "name": "bilicli",
-  "version": "0.3.2",
-  "description": "",
+  "name": "bilicli-monorepo",
+  "private": true,
   "homepage": "https://github.com/ddiu8081/bilicli#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ddiu8081/bilicli"
-  },
-  "scripts": {
-    "dev": "temir src/main.ts",
-    "build": "temir build src/main.ts"
-  },
-  "bin": {
-    "bilicli": "bin/bilicli.js"
-  },
-  "main": "dist/main.js",
-  "files": [
-    "bin",
-    "dist"
-  ],
   "keywords": [
     "bilibili",
     "bilibili-live",
@@ -29,20 +12,8 @@
     "tui"
   ],
   "author": "ddiu8081 <ddiu8081@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
-    "@temir/cli": "^0.0.20",
     "@types/node": "^18.8.3",
     "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "@temir/core": "^0.0.20",
-    "@temir/link": "^0.0.20",
-    "@temir/tab": "^0.0.20",
-    "blive-message-listener": "^0.3.0",
-    "dayjs": "^1.11.5",
-    "mri": "^1.2.0",
-    "ohmyfetch": "^0.4.19",
-    "vue": "^3.2.40"
   }
 }

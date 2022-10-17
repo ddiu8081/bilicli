@@ -1,0 +1,45 @@
+{
+  "name": "@bilicli/live",
+  "version": "0.3.2",
+  "description": "",
+  "scripts": {
+    "dev": "temir src/index.ts",
+    "build": "temir build src/index.ts"
+  },
+  "main": "dist/main.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "keywords": [
+    "bilibili",
+    "bilibili-live",
+    "danmaku",
+    "danmu",
+    "terminal",
+    "cli",
+    "tui"
+  ],
+  "author": "ddiu8081 <ddiu8081@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@temir/cli": "^0.0.20"
+  },
+  "dependencies": {
+    "@temir/core": "^0.0.20",
+    "@temir/link": "^0.0.20",
+    "@temir/tab": "^0.0.20",
+    "blive-message-listener": "^0.3.0",
+    "dayjs": "^1.11.5",
+    "ohmyfetch": "^0.4.19",
+    "vue": "^3.2.40"
+  }
+}

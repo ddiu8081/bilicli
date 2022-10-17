@@ -1,0 +1,40 @@
+{
+  "name": "bilicli",
+  "version": "0.3.2",
+  "description": "Bilibili-live danmu dashboard in your terminal.",
+  "homepage": "https://github.com/ddiu8081/bilicli#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddiu8081/bilicli"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "bin": {
+    "bilicli": "bin/bilicli.js"
+  },
+  "main": "dist/main.js",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "keywords": [
+    "bilibili",
+    "bilibili-live",
+    "danmaku",
+    "danmu",
+    "terminal",
+    "cli",
+    "tui"
+  ],
+  "author": "ddiu8081 <ddiu8081@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^6.2.3"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "@bilicli/live": "workspace:*"
+  }
+}
