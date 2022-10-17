@@ -1,7 +1,4 @@
-import { render } from '@temir/core'
-import { h } from 'vue'
-import App from './App.vue'
-
+import { startInstance } from './instance'
 import { getRoomInfo } from './utils/getInfo'
 
 const startApp = async (roomId: number, options: AppOptions) => {
@@ -10,18 +7,8 @@ const startApp = async (roomId: number, options: AppOptions) => {
     console.log('房间不存在')
     return process.exit(1)
   }
-
-  const NewApp = {
-    render() {
-      return h(App, {
-        roomId,
-        roomInfo,
-        options
-      })
-    }
-  }
-
-  render(NewApp)
+  console.log(roomId, `(${roomInfo.parent_area_name}·${roomInfo.area_name})`, roomInfo.title)
+  startInstance(roomInfo.room_id, options)
 }
 
 export { startApp }

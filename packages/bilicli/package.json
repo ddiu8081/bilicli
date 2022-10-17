@@ -30,11 +30,9 @@
   ],
   "author": "ddiu8081 <ddiu8081@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "tsup": "^6.2.3"
-  },
   "dependencies": {
-    "cac": "^6.7.14",
-    "@bilicli/live": "workspace:*"
+    "@bilicli/live": "workspace:*",
+    "@bilicli/live-mini": "workspace:*",
+    "cac": "^6.7.14"
   }
 }

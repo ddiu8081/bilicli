@@ -1,7 +1,7 @@
 {
   "name": "@bilicli/live",
   "version": "0.3.2",
-  "description": "",
+  "description": "Bili-Live danmu client",
   "scripts": {
     "dev": "temir src/index.ts",
     "build": "temir build src/index.ts"
