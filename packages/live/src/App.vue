@@ -21,7 +21,15 @@ import GiftMsgCom from './components/msgCom/GiftMsgCom.vue'
 import GuardBuyMsgCom from './components/msgCom/GuardBuyMsgCom.vue'
 import UserActionMsgCom from './components/msgCom/UserActionMsgCom.vue'
 
-const currentRoomInfo = ref<RoomInfo | null>(null)
+interface Props {
+  roomId: number
+  roomInfo: RoomInfo
+  options: AppOptions
+}
+
+const props = defineProps<Props>()
+
+const currentRoomInfo = ref<RoomInfo>(props.roomInfo)
 const liveStatus = ref({
   isLive: false,
   startTime: ''
@@ -38,12 +46,6 @@ const giftList = ref<Message<GiftMsg>[]>([])
 const guardBuyList = ref<Message<GuardBuyMsg>[]>([])
 const userActionList = ref<Message<UserActionMsg>[]>([])
 
-interface Props {
-  roomId: number
-  options: AppOptions
-}
-
-const props = defineProps<Props>()
 provide('options', props.options)
 
 onMounted(async () => {
