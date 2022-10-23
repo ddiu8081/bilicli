@@ -31,7 +31,7 @@
   "author": "ddiu8081 <ddiu8081@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@bilicli/live": "workspace:*",
+    "@bilicli/live-full": "workspace:*",
     "@bilicli/live-mini": "workspace:*",
     "cac": "^6.7.14"
   }

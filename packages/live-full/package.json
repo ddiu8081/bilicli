@@ -1,5 +1,5 @@
 {
-  "name": "@bilicli/live",
+  "name": "@bilicli/live-full",
   "version": "0.3.2",
   "description": "Bili-Live danmu client",
   "scripts": {
@@ -37,9 +37,9 @@
     "@temir/core": "^0.0.20",
     "@temir/link": "^0.0.20",
     "@temir/tab": "^0.0.20",
-    "blive-message-listener": "^0.3.0",
-    "dayjs": "^1.11.5",
-    "ohmyfetch": "^0.4.19",
-    "vue": "^3.2.40"
+    "blive-message-listener": "^0.3.1",
+    "dayjs": "^1.11.6",
+    "ohmyfetch": "^0.4.20",
+    "vue": "^3.2.41"
   }
 }

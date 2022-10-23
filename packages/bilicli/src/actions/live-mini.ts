@@ -5,11 +5,11 @@ interface ArgOptions {
   rank: boolean
 }
 
-const mini = async(roomId: string, options: ArgOptions) => {
+const liveMini = async(roomId: string, options: ArgOptions) => {
   startApp(~~roomId, {
     badge: options.badge,
     rank: options.rank,
   })
 }
 
-export { mini }
+export { liveMini }
