@@ -11,11 +11,11 @@ Api driven by [blive-message-listener](https://github.com/ddiu8081/blive-message
 ## Usage
 
 ```bash
-npx bilicli <room_id> [...options]
+npx bilicli live <room_id> [...options]
+npx bilicli live-full <room_id> [...options]
 ```
 
 ### Arguments
-
 
 - `room_id`: B站直播间房间号，支持短id
 
