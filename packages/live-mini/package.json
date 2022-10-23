@@ -1,6 +1,6 @@
 {
   "name": "@bilicli/live-mini",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Bili-Live danmu client, lite version",
   "type": "module",
   "main": "dist/index.js",
