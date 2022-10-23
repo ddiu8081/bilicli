@@ -2,18 +2,13 @@
   "name": "@bilicli/live-mini",
   "version": "0.0.1",
   "description": "Bili-Live danmu client, lite version",
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
   },
   "files": [
     "dist"
@@ -31,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "blive-message-listener": "^0.3.1",
-    "colorette": "^2.0.19",
+    "chalk": "^5.1.2",
     "ohmyfetch": "^0.4.20"
   }
 }

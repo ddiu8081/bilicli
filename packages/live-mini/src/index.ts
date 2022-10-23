@@ -1,5 +1,6 @@
 import { startInstance } from './instance'
 import { getRoomInfo } from './utils/getInfo'
+import { roomInfoCom } from './component/roomInfo'
 
 const startApp = async (roomId: number, options: AppOptions) => {
   const roomInfo = await getRoomInfo(roomId)
@@ -7,7 +8,8 @@ const startApp = async (roomId: number, options: AppOptions) => {
     console.log('房间不存在')
     return process.exit(1)
   }
-  console.log(roomId, `(${roomInfo.parent_area_name}·${roomInfo.area_name})`, roomInfo.title)
+  // Room Info
+  console.log(roomInfoCom(roomInfo))
   startInstance(roomInfo.room_id, options)
 }
 

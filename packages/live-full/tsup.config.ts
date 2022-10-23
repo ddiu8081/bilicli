@@ -1,5 +1,5 @@
 export default {
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   entry: [
     'src/index.ts',
   ],
