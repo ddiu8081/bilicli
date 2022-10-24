@@ -8,7 +8,7 @@ import { danmuMsgCom } from './component/msg'
 export const startInstance = (roomId: number, options: AppOptions) => {
   const handler: MsgHandler = {
     onIncomeDanmu: (msg) => {
-      console.log(danmuMsgCom(msg.body))
+      !msg.body.lottery && console.log(danmuMsgCom(msg.body))
     },
   }
   startListen(roomId, handler)
