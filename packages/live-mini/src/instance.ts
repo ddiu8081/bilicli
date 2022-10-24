@@ -1,6 +1,6 @@
 import { startListen } from 'blive-message-listener'
 import type { MsgHandler } from 'blive-message-listener'
-import { danmuMsgCom, superChatMsgCom, giftMsgCom } from './component/msg'
+import { danmuMsgCom, superChatMsgCom, giftMsgCom, guardBuyMsgCom } from './component/msg'
 
 export const startInstance = (roomId: number, options: AppOptions) => {
   const handler: MsgHandler = {
@@ -12,7 +12,10 @@ export const startInstance = (roomId: number, options: AppOptions) => {
     },
     onGift: (msg) => {
       console.log(giftMsgCom(msg.body))
-    }
+    },
+    onGuardBuy(msg) {
+      console.log(guardBuyMsgCom(msg.body))
+    },
   }
   startListen(roomId, handler)
 }
