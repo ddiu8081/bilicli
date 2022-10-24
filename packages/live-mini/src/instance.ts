@@ -1,9 +1,6 @@
 import { startListen } from 'blive-message-listener'
-import type { 
-  MsgHandler, Message,
-  DanmuMsg, SuperChatMsg, GiftMsg, GuardBuyMsg, UserActionMsg
-} from 'blive-message-listener'
-import { danmuMsgCom } from './component/msg'
+import type { MsgHandler } from 'blive-message-listener'
+import { danmuMsgCom, superChatMsgCom, giftMsgCom } from './component/msg'
 
 export const startInstance = (roomId: number, options: AppOptions) => {
   const handler: MsgHandler = {
@@ -11,7 +8,10 @@ export const startInstance = (roomId: number, options: AppOptions) => {
       !msg.body.lottery && console.log(danmuMsgCom(msg.body))
     },
     onIncomeSuperChat: (msg) => {
-      console.log(danmuMsgCom(msg.body))
+      console.log(superChatMsgCom(msg.body))
+    },
+    onGift: (msg) => {
+      console.log(giftMsgCom(msg.body))
     }
   }
   startListen(roomId, handler)

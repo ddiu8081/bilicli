@@ -2,7 +2,7 @@ import ansis from 'ansis'
 import type { SuperChatMsg } from 'blive-message-listener'
 import { usernameCom } from '../username'
 
-export const danmuMsgCom = (msg: SuperChatMsg) => {
+export const superChatMsgCom = (msg: SuperChatMsg) => {
   const components = [
     `${usernameCom(msg.user)}:`,
     `(¥${ msg.price })`,
