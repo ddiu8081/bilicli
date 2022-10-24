@@ -2,12 +2,21 @@ import ansis from 'ansis'
 import type { DanmuMsg } from 'blive-message-listener'
 import { usernameCom } from '../username'
 
-export const danmuMsgCom = (msg: DanmuMsg) => {
-  let msgType = ''
+const danmuType = (msg: DanmuMsg) => {
   if (msg.emoticon) {
-    msgType = '[表情]'
+    return '[表情]'
   } else if (msg.lottery) {
-    msgType = '[抽奖]'
+    return '[抽奖]'
   }
-  return `${usernameCom(msg.user)}: ${ansis.yellow(msgType)} ${msg.content}`
+  return ''
+}
+
+export const danmuMsgCom = (msg: DanmuMsg) => {
+  const components = [
+    `${usernameCom(msg.user)}:`,
+    ansis.yellow(danmuType(msg)),
+    msg.content,
+  ].filter(Boolean)
+
+  return components.join(' ')
 }

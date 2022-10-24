@@ -10,6 +10,9 @@ export const startInstance = (roomId: number, options: AppOptions) => {
     onIncomeDanmu: (msg) => {
       !msg.body.lottery && console.log(danmuMsgCom(msg.body))
     },
+    onIncomeSuperChat: (msg) => {
+      console.log(danmuMsgCom(msg.body))
+    }
   }
   startListen(roomId, handler)
 }
