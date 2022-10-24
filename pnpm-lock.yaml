@@ -45,12 +45,12 @@ importers:
 
   packages/live-mini:
     specifiers:
+      ansis: ^1.5.5
       blive-message-listener: ^0.3.1
-      chalk: ^5.1.2
       ohmyfetch: ^0.4.20
     dependencies:
+      ansis: 1.5.5
       blive-message-listener: 0.3.1
-      chalk: 5.1.2
       ohmyfetch: 0.4.20
 
 packages:
@@ -679,6 +679,11 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /ansis/1.5.5:
+    resolution: {integrity: sha512-DNctovTacxs/NfZpGo6bIGWgLd2oZsDO7RJbiYX6Ttj40LPZM1XKv9WtesH13ieOEm1GajjD+Vik2n9YnSTPdA==}
+    engines: {node: '>=12.13'}
+    dev: false
+
   /any-promise/1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
     dev: true
@@ -794,11 +799,6 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-    dev: false
-
-  /chalk/5.1.2:
-    resolution: {integrity: sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: false
 
   /chokidar/3.5.3:
