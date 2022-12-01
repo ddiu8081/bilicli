@@ -13,8 +13,8 @@
   ],
   "author": "ddiu8081 <ddiu8081@gmail.com>",
   "devDependencies": {
-    "@types/node": "^18.11.3",
-    "tsup": "^6.3.0",
-    "typescript": "^4.8.4"
+    "@types/node": "^18.11.10",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
   }
 }
