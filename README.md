@@ -25,6 +25,15 @@ npx bilicli live-full <room_id> [...options]
 - `--no-badge`: 隐藏用户牌子信息
 - `--no-rank`: 隐藏用户榜单排名信息
 
+## Features
+
+- [x] 舰长与房管标识
+- [x] 分类查看
+- [ ] 数据统计
+- [ ] 本地记录保存
+- [ ] 筛选面板
+- [ ] 发送弹幕
+
 ## Streams
 
 - [【直播录像】写一个命令行版弹幕姬 [#1] - 2022.08.26 21:30场](https://www.bilibili.com/video/BV1ze4y1Z7Tu/)
