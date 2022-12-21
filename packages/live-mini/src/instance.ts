@@ -3,6 +3,7 @@ import type { MsgHandler } from 'blive-message-listener'
 import { danmuMsgCom, superChatMsgCom, giftMsgCom, guardBuyMsgCom } from './component/msg'
 
 export const startInstance = (roomId: number, options: AppOptions) => {
+  global.appOptions = options
   const handler: MsgHandler = {
     onIncomeDanmu: (msg) => {
       !msg.body.lottery && console.log(danmuMsgCom(msg.body))
